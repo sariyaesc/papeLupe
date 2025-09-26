@@ -1,10 +1,5 @@
 {
-  "homepage": "https://sariyaesc.github.io/papeLupe",
   "dependencies": {
     "gh-pages": "^6.3.0"
-  },
-  "scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-}
+  }
 }
