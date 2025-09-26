@@ -24,37 +24,58 @@ const MarginBubble = ({ height = "600px" }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { inventario } = await getData();
+      try {
+        const { inventario } = await getData();
+        console.log("Inventario cargado:", inventario);
 
-      const ganancias = inventario.map(item => item.precio_venta - item.precio_compra);
-      const minG = Math.min(...ganancias);
-      const maxG = Math.max(...ganancias);
+        if (!inventario || inventario.length === 0) {
+          console.warn("⚠️ No hay datos de inventario!");
+          return;
+        }
 
-      const minR = 5;
-      const maxR = 25;
+        const ganancias = inventario.map(item => item.precio_venta - item.precio_compra);
+        const minG = Math.min(...ganancias);
+        const maxG = Math.max(...ganancias);
+        console.log("Ganancias:", ganancias);
+        console.log("Min/Max Ganancia:", minG, maxG);
 
-      const categories = {};
-      inventario.forEach(item => {
-        const ganancia = item.precio_venta - item.precio_compra;
-        const r = minR + ((ganancia - minG) / (maxG - minG)) * (maxR - minR);
+        const minR = 5;
+        const maxR = 25;
 
-        if (!categories[item.categoria]) categories[item.categoria] = [];
-        categories[item.categoria].push({
-          x: item.precio_compra,
-          y: item.precio_venta,
-          r,
-          producto: item.producto,
-          ganancia,
+        const categories = {};
+        inventario.forEach((item, index) => {
+          const ganancia = item.precio_venta - item.precio_compra;
+
+          const r = maxG - minG === 0 
+            ? (minR + maxR) / 2 
+            : minR + ((ganancia - minG) / (maxG - minG)) * (maxR - minR);
+
+          if (!categories[item.categoria]) categories[item.categoria] = [];
+          categories[item.categoria].push({
+            x: item.precio_compra,
+            y: item.precio_venta,
+            r,
+            producto: item.producto,
+            ganancia,
+          });
+
+          console.log(
+            `Item ${index}: ${item.producto}, Cat: ${item.categoria}, x: ${item.precio_compra}, y: ${item.precio_venta}, r: ${r}`
+          );
         });
-      });
 
-      const datasets = Object.entries(categories).map(([cat, items]) => ({
-        label: cat,
-        data: items,
-        backgroundColor: categoryColors[cat] || "#8884d8",
-      }));
+        const datasets = Object.entries(categories).map(([cat, items]) => ({
+          label: cat,
+          data: items,
+          backgroundColor: categoryColors[cat] || "#8884d8",
+        }));
 
-      setData({ datasets });
+        console.log("Datasets finales:", datasets);
+        setData({ datasets });
+
+      } catch (error) {
+        console.error("❌ Error cargando datos para Bubble:", error);
+      }
     };
 
     fetchData();
@@ -63,7 +84,7 @@ const MarginBubble = ({ height = "600px" }) => {
   if (!data) return <div>Cargando...</div>;
 
   const options = {
-    maintainAspectRatio: false, // esto permite que el chart ocupe todo el contenedor
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -75,7 +96,7 @@ const MarginBubble = ({ height = "600px" }) => {
       },
       legend: {
         display: true,
-        position: "right", // mover leyenda a la derecha
+        position: "right",
         labels: {
           usePointStyle: true,
           boxWidth: 12,
