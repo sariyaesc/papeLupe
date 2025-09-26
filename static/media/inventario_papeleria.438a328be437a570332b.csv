@@ -1,0 +1,29 @@
+producto,categoria,precio_compra,precio_venta,stock_actual,stock_minimo,proveedor
+Cuaderno profesional Scribe,Cuadernos,32,45.5,45,20,Papelera del Norte
+Cuaderno espiral chico,Cuadernos,19,28,38,15,Papelera del Norte
+Lápiz Mirado 2B,Escritura,5,8,120,50,Dixion Comercial
+Pluma BIC azul,Escritura,4.5,7.5,85,40,BIC México
+Pluma BIC negra,Escritura,4.5,7.5,72,40,BIC México
+Pluma gel colores 10pz,Escritura,58,85,12,5,Pelikan México
+Goma Pelikan,Escritura,3,5,65,30,Pelikan México
+Corrector líquido,Escritura,11,18,22,10,Pelikan México
+Marcatextos 6pz,Escritura,28,45,18,8,Stabilo
+Sacapuntas metal,Escritura,7.5,12,25,10,Dixion Comercial
+Pegamento Pritt 40g,Adhesivos,22,35,28,15,Henkel México
+Resistol 850 250ml,Adhesivos,26,42,15,8,Henkel México
+Hojas blancas 500pz,Papel,56,89,42,20,Copamex
+Papel bond colores 100pz,Papel,42,65,18,10,Copamex
+Tijeras escolares,Corte,15,25,32,15,Barrilito
+Colores Mapita 12pz,Arte,28,45,25,10,Dixon Comercial
+Colores Prismacolor 24pz,Arte,210,320,8,3,Prismacolor México
+Marcadores Sharpie 12pz,Arte,125,185,10,4,Newell Brands
+Folder manila,Organización,2,3.5,180,100,Papelera del Norte
+Carpeta tamaño carta,Organización,7.5,12,35,20,Wilson
+Post-it 3x3,Organización,18,28,22,10,3M México
+Regla 30cm,Medición,9,15,28,15,Barrilito
+Juego de geometría,Medición,35,55,18,8,Maped
+Calculadora básica,Electrónicos,75,120,12,5,Casio México
+Calculadora científica Casio,Electrónicos,165,250,6,2,Casio México
+Mochila escolar básica,Mochilas,220,350,15,5,Textiles Escolares
+Mochila escolar premium,Mochilas,380,550,8,3,Textiles Escolares
+Diccionario español,Libros,85,125,10,4,Editorial Larousse
